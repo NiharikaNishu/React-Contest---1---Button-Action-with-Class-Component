@@ -1,31 +1,33 @@
 import React, { Component, useState } from "react";
-import "../styles/App.css";
+// import "../styles/App.css";
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShow: false
+      display: false
     };
-    this.createText = this.createText.bind(this);
-  }
-
-  createText() {
-    this.setState({ isShow: true });
+    this.renderParagraph = () => {
+      this.setState({
+        para: (
+          <p id="para">
+            "Hello, I've learnt to use the full-stack evaluation tool. This
+            makes me so happy"
+          </p>
+        ),
+        display: true
+      });
+    };
   }
 
   render() {
     return (
-      <div id="main">
-        <button id="click" onClick={this.createText}></button>
-        {this.state.isShow && (
-          <p id="para">
-            Hello, I've learnt to use the full-stack evaluation tool. This makes
-            me so happy
-          </p>
-        )}
-        {/* Do not remove this main div!! */}
-      </div>
+      <>
+        <div id="main">
+          <button onClick={this.renderParagraph} id="click"></button>
+          {this.state.para}
+        </div>
+      </>
     );
   }
 }
